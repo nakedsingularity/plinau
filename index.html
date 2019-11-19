@@ -21,6 +21,11 @@
                 background-color: #e1e9ef;
             }
 
+            @media (max-width: 1200px) {
+              .navbar {
+              }
+            }
+
             #plinau {
                 padding:0px 100px;
                 padding-bottom:1px;
@@ -33,6 +38,7 @@
             @media (max-width: 1200px) {
               #plinau {
                 padding-left:15px;
+                margin:;
               }
             }
 
@@ -67,7 +73,7 @@
             @media (max-width: 1200px) {
               #contacts {
                 text-align: right;
-                margin-right: 11px;
+                margin-right: 16px;
                 margin-top:-5px;
                 margin-bottom:7px;
               }
@@ -145,7 +151,7 @@
             }
 
             @media (max-width: 1200px) {
-              #gallery {
+              #gallery li {
                 padding-left:200px;
               }
             }
@@ -155,18 +161,20 @@
                 text-decoration:none;
             }
 
-            @media (max-width: 1200px) {
-              .navbar {
-                .navbar-transition .navbar-header-main .navbar-brand, .navbar-transition .navbar-main > li > .navbar-text, .navbar-transition .navbar-main > li > a {
-    line-height: 64px;
-    height: 65px;
-              }
+            .faded-bg {
+                transition: 0.5s ease;
+                background-color: #abaeb5;
             }
-
-            .navbar-nav {
+            .unfaded-bg {
                 transition:0.3s;
             }
-
+            .hover-nav {
+                color: red;
+                transition: 0.3s;
+            }
+            .unhover-nav {
+                transition: 0.3s;
+            }
         </style>
 
   </head> 
@@ -184,7 +192,7 @@
                 <button class="navbar-toggler hoverable" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
-                <!--add  shadow-sm if nesessary -->
+                
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ">
                     <li class="nav-item active">
@@ -205,14 +213,18 @@
                     </li>
                     <li> 
                         <a href="#">
-                            <i id="inst" class="fab fa-instagram fa-lg logo float-right"></i>
+                            <i id="inst" class="fab fa-instagram fa-lg logo float-right nav-link"></i>
                         </a>
                     </li>
                     <li>
-                        <i id="vk" class="fab fa-vk fa-lg logo float-right" href="#"></i>
+                        <a href="#">
+                            <i id="vk" class="fab fa-vk fa-lg logo float-right nav-link" href="#"></i>
+                        </a>
                     </li>
                     <li>
-                        <i id="env" class="fas fa-envelope fa-lg logo float-right" href="#"></i>
+                        <a href="#">
+                            <i id="env" class="fas fa-envelope fa-lg logo float-right nav-link" href="#"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -252,12 +264,15 @@
 
         <script type="text/javascript">
 
-            $(".navbar-toggler ").hover(function(){
-                $(this).fadeIn()
-            }); 
+            $( ".navbar-toggler" ).click(function() {
+                $("body").toggleClass( "faded-bg" );
+                $("body").addClass( "unfaded-bg" );
+            });
 
-          //  $(".navbar-toggler").click
-
+            $(".nav-link").hover(function(){
+                $(this).toggleClass( "hover-nav" )
+                $(this).addClass( "unhover-nav" )
+            });
 
         </script>
 
