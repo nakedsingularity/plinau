@@ -11,6 +11,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
         <script src="https://kit.fontawesome.com/4b0260ce29.js" crossorigin="anonymous"></script>
 
         <title>@plinau</title>
@@ -124,7 +126,7 @@
               .logo {
                 margin-right: 22px;
                 margin-bottom:0px;
-                margin-top:-1px;
+                margin-top:-6px;
               }
             }
 
@@ -135,7 +137,8 @@
             @media (max-width: 1200px) {
               .hidden {
                 display: block;
-                
+                margin-right:15px;
+                margin-left:-8px;
               }
             }
 
@@ -168,19 +171,83 @@
             .unfaded-bg {
                 transition:0.3s;
             }
+
             .hover-nav {
-                color: red;
                 transition: 0.3s;
+                color:red;
             }
-            .unhover-nav {
-                transition: 0.3s;
+
+            .btn-default:hover {
+                color:red;
+            }
+
+            @keyframes transitionIn {
+                from {
+                    opacity:0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity:1;
+                    transform: translateY(0);
+                }
+            }
+            @keyframes transitionInDelay {
+                from {
+
+                    opacity:0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    animation-delay:3s;
+                    opacity:1;
+                    transform: translateY(0);
+                }
+            }
+            @keyframes transitionInDelayToggler {
+                from {
+                    animation-timing-function: ease-in;
+                    opacity:0;
+                }
+                to {
+                    opacity:1;
+                }
+            }
+            .container {
+                animation: transitionIn 0.75s;
+            }
+            .nav-link  {
+                animation: transitionIn 0.75s;
+            }
+            #inst {
+                animation: transitionInDelay 2s;
+            }
+            #vk {
+                animation: transitionInDelay 2.6s;
+            }
+            #env {
+                animation: transitionInDelay 3.2s;
+            }
+            .navbar-toggler {
+                animation: transitionInDelayToggler 1s;
+            }
+
+            .no-js #loader { display: none;  }
+            .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+            .se-pre-con {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background: url(http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_2.gif) center no-repeat #fff;
             }
         </style>
 
   </head> 
 
   <body>
-
+    <div class="se-pre-con"></div>
         <nav class="navbar navbar-light fixed-top navbar-expand-xl shadow-sm p-3 mb-5 bg-white rounded">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
@@ -189,10 +256,10 @@
                     </div>
                 </a>
             </div>
-                <button class="navbar-toggler hoverable" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler hoverable btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
-                
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ">
                     <li class="nav-item active">
@@ -203,12 +270,13 @@
                     </li>
                     <li id="gallery" class="nav-item">
                         <a class="nav-link" href="#">Gallery</a>
-                        <hr class="hidden">
+                        
                     </li>
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
                     <li>
+                        <hr class="hidden">
                         <a id="contacts" class="nav-link active" href="#">Contact me:</a>
                     </li>
                     <li> 
@@ -262,6 +330,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
         <script type="text/javascript">
 
             $( ".navbar-toggler" ).click(function() {
@@ -270,9 +341,20 @@
             });
 
             $(".nav-link").hover(function(){
-                $(this).toggleClass( "hover-nav" )
-                $(this).addClass( "unhover-nav" )
+                $(this).addClass( "hover-nav" )
             });
+
+            $(".navbar-toggler").hover(function(){
+                $(this).addClass( "" )
+            });
+
+        
+
+            $(window).load(function() {
+                // Animate loader off screen
+                $(".se-pre-con").fadeOut("fast");;
+            });
+
 
         </script>
 
